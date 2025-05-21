@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GtaBack</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Bouton Discord -->
+  <a href="https://discord.gg/gtaback" class="discord-button top-right" target="_blank">
+    <img src="logo.png" alt="Discord">
+  </a>
+
+  <!-- Fond logo animé -->
+  <div class="background-logo">
+    <img src="logo.gif" alt="Logo en fond" />
+  </div>
+
+  <!-- Contenu du site -->
+  <div class="site-content">
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">GtaBack</h1>
+        <ul class="nav-links">
+          <li><a href="#">Accueil</a></li>
+          <li><a href="#">Règlement</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 20px;">
+        <a href="https://cfx.re/join/ovgdxy" target="_blank" class="btn neon">
+          🚀 Nous Rejoindre
+        </a>
+        <a href="https://gtaback.tebex.io/" target="_blank" class="btn neon tebex-button">
+          🛒 Accéder à la boutique
+        </a>
+        <a href="https://gitbook" target="_blank" class="btn neon réglement-button">
+          📜 Voir le règlement
+        </a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 GtaBack</p>
+    </footer>
+  </div>
+
+  <img src="C:\Users\Utilisateur\Desktop\GtaBack site\golo.png" alt="Logo" class="logo-gif-left" />
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+
+      <div class="tabs">
+        <button class="tab active tab-general neon-button-gray" data-tab="Général">
+          <span class="icon-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#ccc" width="28" height="28" viewBox="0 0 24 24">
+              <path d="M18 2H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10v2H6c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h12v2z"/>
+              <path d="M22 6H10v2h12V6zm0 4H10v2h12v-2zm0 4H10v2h12v-2z"/>
+            </svg>
+          </span>
+          Général
+        </button>
+
+        <button class="tab tab-Illégal neon-button-red" data-tab="Illégal">
+          <span class="icon-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#ff4d4d" width="28" height="28" viewBox="0 0 24 24">
+              <path d="M18 2H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10v2H6c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h12v2z"/>
+              <path d="M22 6H10v2h12V6zm0 4H10v2h12v-2zm0 4H10v2h12v-2z"/>
+            </svg>
+          </span>
+          Illégal
+        </button>
+
+        <button class="tab tab-Légal neon-button-green" data-tab="Légal">
+          <span class="icon-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#00ff88" viewBox="0 0 24 24" width="28" height="28">
+              <path d="M18 2H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10v2H6c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h12v2z"/>
+              <path d="M22 6H10v2h12V6zm0 4H10v2h12v-2zm0 4H10v2h12v-2z"/>
+            </svg>
+          </span>
+          Légal
+        </button>
+      </div>
+
+      <div class="tab-content active" id="Général">
+        <ul>
+          <li>Respect de tous les membres.</li>
+          <li>Pas de spam ou de flood.</li>
+          <li>Comportement mature et responsable.</li>
+          <li>Pas de hrp vocal</li>
+          <li>Pas de mods hrp (no water, no bush etc)</li>
+        </ul>
+      </div>
+
+      <div class="tab-content" id="Légal">
+        <ul>
+          <li>Publicité interdite sans autorisation.</li>
+          <li>Contenu NSFW, politique ou sensible interdit.</li>
+          <li>Utilisation de cheat ou d'autoclick interdit.</li>
+        </ul>
+      </div>
+
+      <div class="tab-content" id="Illégal">
+        <ul>
+          <li>Avertissements → Kick → Ban.</li>
+          <li>Les modérateurs jugent selon le contexte.</li>
+          <li>Répétition = bannissement permanent.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const openBtn = document.getElementById("openModal");
+    const closeBtn = document.getElementById("closeModal");
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+
+    if (openBtn) {
+      openBtn.addEventListener("click", () => {
+        modal.style.display = "flex";
+      });
+    }
+
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    });
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
